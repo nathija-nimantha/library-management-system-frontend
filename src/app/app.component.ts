@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NavBarGuestComponent } from './common/nav-bar-guest/nav-bar-guest.component';
 import { NavBarCustomerComponent } from './common/nav-bar-customer/nav-bar-customer.component';
@@ -9,8 +9,7 @@ import { AuthService } from './auth/auth.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
+  imports: [NgIf,
     RouterOutlet,
     NavBarGuestComponent,
     NavBarCustomerComponent,

@@ -1,6 +1,5 @@
 <div class="login-page d-flex justify-content-center align-items-center">
   <div class="overlay"></div>
-
   <div class="auth-card" data-aos="fade-up">
     <div class="toggle-buttons text-center mb-4">
       <button class="btn-toggle" [class.active]="isLoginMode" (click)="toggleMode(true)">
@@ -14,27 +13,39 @@
       <h3 class="text-center mb-4">Login</h3>
       <div class="mb-3">
         <label for="login-email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="login-email" required />
+        <input type="email" class="form-control" id="login-email" [(ngModel)]="email" name="email" required />
       </div>
       <div class="mb-3">
         <label for="login-password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="login-password" required />
+        <input type="password" class="form-control" id="login-password" [(ngModel)]="password" name="password" required />
       </div>
       <button type="submit" class="btn btn-primary w-100">Login</button>
-    </form>
+    </form>    
     <form *ngIf="!isLoginMode" (ngSubmit)="onSignUp()">
       <h3 class="text-center mb-4">Sign Up</h3>
       <div class="mb-3">
         <label for="signup-name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="signup-name" required />
+        <input type="text" [(ngModel)]="name" name="signupName" class="form-control" id="signup-name" required />
       </div>
       <div class="mb-3">
         <label for="signup-email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="signup-email" required />
+        <input type="email" [(ngModel)]="email" name="signupEmail" class="form-control" id="signup-email" required />
+      </div>
+      <div class="mb-3">
+        <label for="signup-phone" class="form-label">Phone Number</label>
+        <input type="text" [(ngModel)]="phone" name="signupPhone" class="form-control" id="signup-phone" required
+          pattern="^0[0-9]{9}$" />
+        <small class="text-muted">Phone number must start with 0 and have 10 digits.</small>
+      </div>
+      <div class="mb-3">
+        <label for="signup-address" class="form-label">Address</label>
+        <textarea [(ngModel)]="address" name="signupAddress" class="form-control" id="signup-address"
+          required></textarea>
       </div>
       <div class="mb-3">
         <label for="signup-password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="signup-password" required />
+        <input type="password" [(ngModel)]="password" name="signupPassword" class="form-control" id="signup-password"
+          required />
       </div>
       <button type="submit" class="btn btn-primary w-100">Sign Up</button>
     </form>
