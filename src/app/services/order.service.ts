@@ -7,11 +7,12 @@ export interface Order {
   customerId: number;
   bookId1?: number | null;
   bookId2?: number | null;
-  quantity: number;
-  totalAmount: number;
+  remarks?: string;
   status: string;
   customerName?: string;
-  bookTitle?: string;
+  bookTitle1?: string;
+  bookTitle2?: string;
+  totalAmount?: number;
 }
 
 @Injectable({

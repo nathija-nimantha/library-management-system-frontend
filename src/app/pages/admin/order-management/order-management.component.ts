@@ -8,8 +8,8 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order-management',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
+  standalone: true,
   templateUrl: './order-management.component.html',
   styleUrls: ['./order-management.component.css']
 })
@@ -17,18 +17,7 @@ export class OrderManagementComponent implements OnInit {
   orders: Order[] = [];
   customers: Customer[] = [];
   books: Book[] = [];
-  statusOptions = [
-    'Pending',
-    'Processing',
-    'Shipped',
-    'Out for Delivery',
-    'Delivered',
-    'Cancelled',
-    'Returned',
-    'Refunded',
-    'On Hold',
-    'Completed'
-];
+  statusOptions = ['Pending', 'Completed', 'Shipped'];
   orderForm: FormGroup;
   editingOrder: Order | null = null;
   selectedBook1: number | null = null;
@@ -44,8 +33,7 @@ export class OrderManagementComponent implements OnInit {
       customerId: ['', Validators.required],
       bookId1: ['', Validators.required],
       bookId2: [''],
-      quantity: [1, [Validators.required, Validators.min(1)]],
-      totalAmount: [{ value: 0, disabled: true }],
+      remarks: [''],
       status: ['', Validators.required]
     });
   }
@@ -98,7 +86,6 @@ export class OrderManagementComponent implements OnInit {
     this.orderForm.patchValue(order);
     this.selectedBook1 = this.orderForm.get('bookId1')?.value ?? null;
     this.selectedBook2 = this.orderForm.get('bookId2')?.value ?? null;    
-    this.updateTotalAmount();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -131,24 +118,21 @@ export class OrderManagementComponent implements OnInit {
   }
 
   onBook1Selected(): void {
-    this.selectedBook1 = this.orderForm.get('bookId1')?.value ?? null;
-    this.updateTotalAmount();
+    this.selectedBook1 = this.orderForm.value.bookId1;
   }
 
   onBook2Selected(): void {
-    this.selectedBook2 = this.orderForm.get('bookId2')?.value ?? null;
-    this.updateTotalAmount();
+    this.selectedBook2 = this.orderForm.value.bookId2;
   }
 
-  updateTotalAmount(): void {
-    const book1 = this.books.find(book => book.id === this.selectedBook1);
-    const book2 = this.books.find(book => book.id === this.selectedBook2);
-    const quantity = this.orderForm.get('quantity')?.value || 1;
+  getCustomerName(customerId: number): string | undefined {
+    return this.customers.find(customer => customer.id === customerId)?.name || 'Unknown Customer';
+  }
 
-    const book1Price = book1?.price ?? 0;
-    const book2Price = book2?.price ?? 0;
-    const totalPrice = (book1Price + book2Price) * quantity;
-
-    this.orderForm.get('totalAmount')?.setValue(totalPrice);
+  getBookTitle(bookId: number | null | undefined): string {
+    if (bookId == null) {
+      return 'No Book Selected';
+    }
+    return this.books.find(book => book.id === bookId)?.title || 'Unknown Book';
   }
 }

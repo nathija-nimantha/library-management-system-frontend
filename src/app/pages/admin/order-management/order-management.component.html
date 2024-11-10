@@ -1,71 +1,65 @@
 <div class="order-management container py-5">
     <h2 class="text-center mb-4" data-aos="fade-down">Order Management</h2>
+  
     <form [formGroup]="orderForm" (ngSubmit)="editingOrder ? updateOrder() : addOrder()" data-aos="fade-right">
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label><i class="bi bi-person-fill me-2"></i>Customer</label>
-                <select formControlName="customerId" class="form-select">
-                    <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
-                </select>
-            </div>
-            <div class="col-md-6">
-                <label><i class="bi bi-book-fill me-2"></i>Book 1</label>
-                <select formControlName="bookId1" class="form-select" (change)="onBook1Selected()">
-                    <option *ngFor="let book of books" [value]="book.id">{{ book.title }}</option>
-                </select>
-            </div>
-            <div class="col-md-6" *ngIf="selectedBook1">
-                <label><i class="bi bi-book-fill me-2"></i>Book 2</label>
-                <select formControlName="bookId2" class="form-select" (change)="onBook2Selected()">
-                    <option *ngFor="let book of books" [value]="book.id">{{ book.title }}</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label><i class="bi bi-hash me-2"></i>Quantity</label>
-                <input formControlName="quantity" type="number" class="form-control" placeholder="Quantity"
-                    (input)="updateTotalAmount()" />
-            </div>
-            <div class="col-md-4">
-                <label><i class="bi bi-currency-dollar me-2"></i>Total Amount</label>
-                <input formControlName="totalAmount" type="number" class="form-control" placeholder="Total Amount"
-                    readonly />
-            </div>
-
-            <div class="col-md-4">
-                <label><i class="bi bi-info-circle-fill me-2"></i>Status</label>
-                <select formControlName="status" class="form-select">
-                    <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-                </select>
-            </div>
-            <div class="col-12 text-end mt-3">
-                <button type="submit" class="btn btn-primary" data-aos="zoom-in">{{ editingOrder ? 'Update' : 'Add' }}
-                    Order</button>
-                <button type="button" *ngIf="editingOrder" class="btn btn-secondary"
-                    (click)="cancelEdit()">Cancel</button>
-            </div>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label><i class="bi bi-person-fill me-2"></i>Customer</label>
+          <select formControlName="customerId" class="form-select">
+            <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
+          </select>
         </div>
+  
+        <div class="col-md-6">
+          <label><i class="bi bi-book-fill me-2"></i>Book 1</label>
+          <select formControlName="bookId1" class="form-select" (change)="onBook1Selected()">
+            <option *ngFor="let book of books" [value]="book.id">{{ book.title }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-6" *ngIf="selectedBook1">
+          <label><i class="bi bi-book-fill me-2"></i>Book 2</label>
+          <select formControlName="bookId2" class="form-select" (change)="onBook2Selected()">
+            <option *ngFor="let book of books" [value]="book.id">{{ book.title }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-4">
+          <label><i class="bi bi-card-text me-2"></i>Remarks</label>
+          <input formControlName="remarks" class="form-control" placeholder="Remarks" />
+        </div>
+  
+        <div class="col-md-4">
+          <label><i class="bi bi-info-circle-fill me-2"></i>Status</label>
+          <select formControlName="status" class="form-select">
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
+        </div>
+  
+        <div class="col-12 text-end mt-3">
+          <button type="submit" class="btn btn-primary" data-aos="zoom-in">{{ editingOrder ? 'Update' : 'Add' }} Order</button>
+          <button type="button" *ngIf="editingOrder" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </div>
     </form>
-    <div class="mt-5">
-        <h4 class="mb-3" data-aos="fade-right">Current Orders</h4>
-        <div *ngFor="let order of orders; let i = index" class="card mb-3" data-aos="fade-up">
-            <div class="card-body d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="card-title">{{ order.bookTitle }}</h5>
-                    <p class="card-text">Customer: {{ order.customerName }}</p>
-                    <p class="card-text"><i class="bi bi-hash"></i> Quantity: {{ order.quantity }}</p>
-                    <p class="card-text"><i class="bi bi-currency-dollar"></i> Total: Rs. {{ order.totalAmount |
-                        number:'1.2-2' }}</p>
-                    <p class="card-text"><i class="bi bi-info-circle-fill"></i> Status: {{ order.status }}</p>
-                </div>
-                <div>
-                    <button class="btn btn-warning btn-sm me-2" (click)="editOrder(order)">
-                        <i class="bi bi-pencil-fill"></i> Edit
-                    </button>
-                    <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.id!)">
-                        <i class="bi bi-trash-fill"></i> Delete
-                    </button>
-                </div>
-            </div>
+    <div *ngFor="let order of orders" class="card mb-3" data-aos="fade-up">
+        <div class="card-body">
+          <p><strong>Customer:</strong> {{ getCustomerName(order.customerId) }}</p>
+          <p><strong>Book 1:</strong> {{ getBookTitle(order.bookId1) }}</p>
+          <p *ngIf="order.bookId2"><strong>Book 2:</strong> {{ getBookTitle(order.bookId2) }}</p>
+          <p><strong>Status:</strong> {{ order.status }}</p>
+          <p><strong>Remarks:</strong> {{ order.remarks }}</p>
+          <p><strong>Total Price:</strong> Rs. {{ order.totalAmount | number:'1.2-2' }}</p>
+          
+          <div class="action-buttons text-end">
+            <button class="btn btn-warning btn-sm me-2" (click)="editOrder(order)">
+              <i class="bi bi-pencil-fill"></i> Edit
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.id!)">
+              <i class="bi bi-trash-fill"></i> Delete
+            </button>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+  </div>
+  
