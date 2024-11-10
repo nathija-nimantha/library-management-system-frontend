@@ -27,7 +27,6 @@ export class CustomerManagementComponent implements OnInit {
       address: ['', Validators.required]
     });
   }
-
   ngOnInit(): void {
     this.loadCustomers();
     AOS.init({ duration: 1000 });

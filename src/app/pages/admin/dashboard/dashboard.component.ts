@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class AdminDashboardComponent {
-
+export class AdminDashboardComponent implements OnInit {
+  ngOnInit(): void {
+    AOS.init({ duration: 1000 });
+  }
 }

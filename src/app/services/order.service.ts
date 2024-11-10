@@ -4,11 +4,14 @@ import { Observable } from 'rxjs';
 
 export interface Order {
   id?: number;
-  customerName: string;
-  bookTitle: string;
+  customerId: number;
+  bookId1?: number | null;
+  bookId2?: number | null;
   quantity: number;
   totalAmount: number;
   status: string;
+  customerName?: string;
+  bookTitle?: string;
 }
 
 @Injectable({

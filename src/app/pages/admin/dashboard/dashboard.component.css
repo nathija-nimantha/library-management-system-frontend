@@ -1,0 +1,31 @@
+.admin-dashboard {
+    min-height: 50vh;
+    background-color: #212529;
+    border-radius: 15px;
+    padding: 30px;
+  }
+
+  .admin-dashboard, .text{
+    color: white;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card i {
+    font-size: 3rem;
+  }
+  
+  .card-title,
+  .card-text {
+    color: #333;
+  }
+  

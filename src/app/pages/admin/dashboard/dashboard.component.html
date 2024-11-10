@@ -1,1 +1,35 @@
-<p>dashboard works!</p>
+<div class="admin-dashboard container py-5">
+    <h2 class="text-center mb-5" data-aos="fade-down">Admin Dashboard</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <i class="bi bi-people-fill fs-1 text-primary mb-3"></i>
+                    <h5 class="card-title">Customer Management</h5>
+                    <p class="card-text text-muted">Manage all customers and their details.</p>
+                    <a routerLink="/admin/customers" class="btn btn-primary">Go to Customers</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <i class="bi bi-book-half fs-1 text-success mb-3"></i>
+                    <h5 class="card-title">Book Management</h5>
+                    <p class="card-text text-muted">Add, update, and delete books in the library.</p>
+                    <a routerLink="/admin/books" class="btn btn-success">Go to Books</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <i class="bi bi-cart-fill fs-1 text-warning mb-3"></i>
+                    <h5 class="card-title">Order Management</h5>
+                    <p class="card-text text-muted">View and manage all orders placed by customers.</p>
+                    <a routerLink="/admin/orders" class="btn btn-warning">Go to Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
