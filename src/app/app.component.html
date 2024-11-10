@@ -1,0 +1,15 @@
+<ng-container *ngIf="authService.isGuest()">
+  <app-nav-bar-guest></app-nav-bar-guest>
+</ng-container>
+
+<ng-container *ngIf="authService.isCustomer()">
+  <app-nav-bar-customer></app-nav-bar-customer>
+</ng-container>
+
+<ng-container *ngIf="authService.isAdmin()">
+  <app-nav-bar-admin></app-nav-bar-admin>
+</ng-container>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

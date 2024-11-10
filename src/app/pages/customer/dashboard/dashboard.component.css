@@ -1,0 +1,46 @@
+.dashboard {
+    position: relative;
+    min-height: 100vh;
+    background-image: url('../../../../assets/images/dashboard-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    border-radius: 50px 50px 0 0;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.container
+
+.dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.dashboard .container {
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-title,
+.card-text {
+    color: #333;
+}

@@ -1,0 +1,50 @@
+.hero-section {
+    position: relative;
+    color: #fff;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+    background-image: url('../../../assets/images/home-background.png');
+    background-size: cover;
+    height: 100vh;
+    border-radius: 20px;
+}
+
+.about-section img {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.features-section{
+    border-radius: 20px;
+}
+
+.features-section .feature-icon i {
+    transition: transform 0.3s ease;
+}
+
+.features-section .feature-icon i:hover {
+    transform: scale(1.2);
+}
+
+.testimonials-section .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonials-section .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section {
+    background: #0d6efd;
+    padding: 3rem 1rem;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+}
+
+.about-image{
+    background-image: url("../../../assets/images/reading-books.jpg");
+    width: 100%;
+    height: 60vh;
+    border-radius: 20px;
+    background-position: center;
+}

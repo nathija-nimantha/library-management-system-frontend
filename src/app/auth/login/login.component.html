@@ -1,0 +1,42 @@
+<div class="login-page d-flex justify-content-center align-items-center">
+  <div class="overlay"></div>
+
+  <div class="auth-card" data-aos="fade-up">
+    <div class="toggle-buttons text-center mb-4">
+      <button class="btn-toggle" [class.active]="isLoginMode" (click)="toggleMode(true)">
+        Login
+      </button>
+      <button class="btn-toggle" [class.active]="!isLoginMode" (click)="toggleMode(false)">
+        Sign Up
+      </button>
+    </div>
+    <form *ngIf="isLoginMode" (ngSubmit)="onLogin()">
+      <h3 class="text-center mb-4">Login</h3>
+      <div class="mb-3">
+        <label for="login-email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="login-email" required />
+      </div>
+      <div class="mb-3">
+        <label for="login-password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="login-password" required />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+    <form *ngIf="!isLoginMode" (ngSubmit)="onSignUp()">
+      <h3 class="text-center mb-4">Sign Up</h3>
+      <div class="mb-3">
+        <label for="signup-name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="signup-name" required />
+      </div>
+      <div class="mb-3">
+        <label for="signup-email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="signup-email" required />
+      </div>
+      <div class="mb-3">
+        <label for="signup-password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="signup-password" required />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+    </form>
+  </div>
+</div>

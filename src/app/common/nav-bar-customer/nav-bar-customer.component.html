@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">BookSphere</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/customer/dashboard" routerLinkActive="is-active">
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/customer/books" routerLinkActive="is-active">
+            Books
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/customer/cart" routerLinkActive="is-active">
+            Cart
+          </a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-light ms-3" (click)="logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

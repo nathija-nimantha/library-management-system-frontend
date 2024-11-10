@@ -1,0 +1,33 @@
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.8rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+  color: #ffdf40;
+}
+
+.nav-link {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd;
+}
+
+.is-active {
+  color: #0d6efd;
+  font-weight: bold;
+  border-bottom: 2px solid #0d6efd;
+}
+
+.btn-outline-light {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: #ffdf40;
+  color: #212529;
+}
